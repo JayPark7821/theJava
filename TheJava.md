@@ -79,4 +79,32 @@ JIT 컴파일러로 반복되는 코드를 모두 네이티브 코드로 바꿔�
 
 ![image](https://user-images.githubusercontent.com/60100532/187487226-f0e9a9cc-6533-48a3-a5bc-03538756c915.png)
 
+ ## 2. 클래스 로더
+
+![image](https://user-images.githubusercontent.com/60100532/187577401-c54b7e20-421c-4efa-a0db-481758e15ba8.png)
+
+* 로딩, 링크, 초기화 순으로 진행됨.  
+  
+
+* 로딩
+  * 클래스 로더가 .class 파일을 읽고 그 내용에 따라 적절한 바이너리 데이터를 만들고 메모리의 "Method"영역에 저장.
+  * "Method" 영역에 저장하는 데이터 
+    * FQCN ( Fully Qualified Class Name )
+    * 클래스|인터페이스|이늄
+    * 메소드와 변수
+  * 로딩이 끝나면 해당 클래스 타입의 Class객체를 생서앟여 메모리 "heap"영역에 저장.  
+    ![image](https://user-images.githubusercontent.com/60100532/187594361-f427c730-f83b-4440-b79c-6204f96b23b9.png)
+
+* 링크
+  * Verify, Prepare, Resolve(optional) 세 단계로 나눠져 있다.
+  * Verify : .class 파일 형식이 유효한지 체크한다.
+  * Prepare : 클래스 변수 ( static 변수)와 기본값에 필요한 메모리 
+  * Resolve : 심볼릭 메모리 레퍼런스를 메소드 영역에 있는 실제 레퍼런스로 교체
+   
+
+* 초기화
+  * Static 변수의 값을 할당함. (static 블럭이 있다면 이때 실행됨.) 
+ 
+
+
  
